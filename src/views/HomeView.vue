@@ -3,12 +3,7 @@
     <div class="chat-box-card">
       <template v-if="userList.length > 0">
         <el-scrollbar class="user-list">
-          <div
-            v-for="item in userList"
-            :key="item.targetId"
-            @click="handleSelect(item.targetId)"
-            class="user-item"
-          >
+          <div v-for="item in userList" :key="item.targetId" class="user-item">
             <div class="user-avatar">
               <img :src="item.photo" alt="" />
             </div>
@@ -54,21 +49,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, toRefs } from "vue";
+import { defineComponent, ref, reactive } from "vue";
 import useCurrentInstance from "@/utils/im";
 
-interface TargetUserInfo {
-  targetId: number;
-  photo: object | string;
-  realName: string;
-}
 export default defineComponent({
   setup() {
     const { proxy } = useCurrentInstance(); //融云 Im
     console.log(proxy.im, "loaded");
-    let circleUrl = reactive({
-      squareUrl: require("@/assets/img/icon-user-default.png"),
-    });
     let userList = reactive([
       //聊天用户列表
       {
@@ -78,25 +65,12 @@ export default defineComponent({
       },
     ]);
     const targetId = ref(0);
-    let targetUserInfo = reactive<TargetUserInfo>({
-      targetId: 0,
-      photo: "",
-      realName: "",
-    });
-    const handleSelect = (id: number): void => {
-      targetId.value = id;
-      let info = userList.filter((item) => item.targetId == id);
-      targetUserInfo.targetId = info.targetId;
-      targetUserInfo.photo = info.photo;
-      targetUserInfo.realName = info.realName;
-    };
+    let targetUserInfo = reactive({});
 
     return {
       userList,
       targetId,
       targetUserInfo,
-      ...toRefs(circleUrl),
-      handleSelect,
     };
   },
 });
