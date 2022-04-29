@@ -3,16 +3,14 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  getCurrentInstance,
-  ComponentInternalInstance,
-} from "vue";
+import { defineComponent } from "vue";
+
+import useCurrentInstance from "@/utils/im";
 
 export default defineComponent({
   setup() {
-    const cns: ComponentInternalInstance | null = getCurrentInstance();
-    console.log(cns, "loaded");
+    const { proxy } = useCurrentInstance();
+    console.log(proxy, "loaded");
   },
 });
 </script>
