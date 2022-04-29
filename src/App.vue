@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="warp">
     <el-container class="layout-container-demo" style="height: 500px">
       <el-aside width="200px">
         <el-scrollbar>
@@ -46,18 +46,23 @@
 <script lang="ts" setup>
 import { Message, Setting } from "@element-plus/icons-vue";
 </script>
+<style lang="scss" scoped>
+::v-deep .el-scrollbar__wrap {
+  background: #fff;
+  border-right: 1px solid #f3f1f1;
+}
+</style>
 <style lang="scss">
+@import "@/assets/styles/public.scss";
+.warp {
+  height: 98vh;
+  display: flex;
+  flex-direction: column;
+}
 .layout-container-demo .el-header {
   position: relative;
-  background-color: var(--el-color-primary-light-7);
-  color: var(--el-text-color-primary);
-}
-.layout-container-demo .el-aside {
-  color: var(--el-text-color-primary);
-  background: var(--el-color-primary-light-8);
-}
-.layout-container-demo .el-menu {
-  border-right: none;
+  background-color: #fff;
+  border-bottom: 1px solid #f3f1f1;
 }
 .layout-container-demo .el-main {
   padding: 0;
