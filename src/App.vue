@@ -43,26 +43,30 @@
     </el-container>
   </div>
 </template>
-
+<script lang="ts" setup>
+import { Message, Setting } from "@element-plus/icons-vue";
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.layout-container-demo .el-header {
+  position: relative;
+  background-color: var(--el-color-primary-light-7);
+  color: var(--el-text-color-primary);
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.layout-container-demo .el-aside {
+  color: var(--el-text-color-primary);
+  background: var(--el-color-primary-light-8);
+}
+.layout-container-demo .el-menu {
+  border-right: none;
+}
+.layout-container-demo .el-main {
+  padding: 0;
+}
+.layout-container-demo .toolbar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  right: 20px;
 }
 </style>
