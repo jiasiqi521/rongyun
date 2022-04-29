@@ -4,9 +4,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+
+import useCurrentInstance from "@/utils/im";
+
 export default defineComponent({
   setup() {
-    console.log("loaded");
+    const { proxy } = useCurrentInstance();
+    console.log(proxy, "loaded");
   },
 });
 </script>
