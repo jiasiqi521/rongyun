@@ -3,11 +3,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import im from "@/utils/RongIMLis";
+import {
+  defineComponent,
+  getCurrentInstance,
+  ComponentInternalInstance,
+} from "vue";
+
 export default defineComponent({
   setup() {
-    console.log(im, "loaded");
+    const cns: ComponentInternalInstance | null = getCurrentInstance();
+    console.log(cns, "loaded");
   },
 });
 </script>
